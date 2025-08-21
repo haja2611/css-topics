@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01- css introduction</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <style>
+      /* universal selector */
+      * {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      /* type selectors  */
+      h3 {
+        color: blue;
+        text-align: center;
+      }
+      /* class selectors */
+      .title {
+        color: red;
+        text-align: center;
+      }
+      /* id selectors */
+      #intro {
+        color: green;
+        text-align: right;
+      }
+      /* attribute selectors */
+      a[target="_blank"] {
+        color: purple;
+      }
+      /* grouping selectors */
+      h1,
+      p,
+      ul {
+        color: orange;
+        text-align: center;
+      }
+      /* descendant selectors */
+      div span {
+        color: blue;
+      }
+      /* child selectors */
+      div > span {
+        color: blue;
+      }
+      /* adjacent sibling selectors */
+      h1 + p {
+        color: green;
+      }
+      /* general sibling selectors */
+      h1 ~ p {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">CSS Introduction</h1>
+    <p id="intro1" class="title">CSS stands for Cascading Style Sheets.</p>
+    <p>It is used to style HTML documents.</p>
+    <p>CSS can control the layout of multiple web pages all at once.</p>
+    <p>CSS can be added to HTML in three ways:</p>
+    <a href="https://cisl.in" target="_blank" rel="noopener noreferrer">
+      Learn more about CSS</a
+    >
+    <a href="https://google.com">google</a>
+    <ul id="intro">
+      <h3>that is adjacent sibling selector</h3>
+      <li>Inline - by using the style attribute inside HTML elements</li>
+      <li>Internal - by using a element style in the head section</li>
+      <li>
+        External - by linking to an external CSS file using a link element
+      </li>
+      <h3>that is adjacent sibling selector</h3>
+    </ul>
+    <h3>Hello this is css</h3>
+    <h3>2nd h3</h3>
+
+    <div>
+      <h1>heading1</h1>
+      <p>something</p>
+      <p>somethin 1</p>
+    </div>
+    <div>
+      <span>This text is blue</span>
+      <p>
+        <span>this text is also blue</span>
+      </p>
+    </div>
+  </body>
+</html>
