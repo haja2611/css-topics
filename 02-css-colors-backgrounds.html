@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-css-colors-background</title>
+    <style>
+      body {
+        background-color: aqua;
+        background-image: url(cat.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: top right;
+        width: 600px;
+        height: 400px;
+      }
+      .container {
+        background: url("cat.jpg");
+        width: 600px;
+        height: 400px;
+  
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">CSS Colors and Backgrounds</h1>
+    </div>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <p>nothing</p>
+    <div>
+      <h1>colors</h1>
+      <p style="color: red">this is red color</p>
+      <p style="color: #00ff00">this is green color</p>
+      <p style="color: rgb(0, 0, 255)">this is blue color</p>
+      <p style="color: hsl(240, 100%, 50%)">this is blue color</p>
+      <p style="color: rgba(255, 0, 0, 0.5)">
+        this is red color with 50% opacity
+      </p>
+      <p style="color: hsla(240, 100%, 50%, 0.1)">
+        this is blue color with 50% opacity
+      </p>
+    </div>
+    <div
+      class="box"
+      style="
+        border: 2px solid black;
+        padding: 20px;
+        margin: 20px;
+        width: 200px;
+        height: 100px;
+        box-sizing: content-box;
+      "
+    >
+      <h1>box sizing</h1>
+    </div>
+    <section>
+      <h2>Exercises</h2>
+      <ol>
+        <li>Change the `red-text` class to use an RGB color of your choice.</li>
+        <li>
+          Modify the `rgba-color-background` to have a different color and
+          opacity.
+        </li>
+        <li>
+          Add a new div with a background image that repeats only horizontally.
+        </li>
+        <li>
+          Experiment with `background-position` to place the background image in
+          the top-right corner.
+        </li>
+      </ol>
+    </section>
+  </body>
+</html>

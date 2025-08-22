@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      class="content-box"
+      style="
+        box-sizing: content-box;
+        width: 100px;
+        padding: 15px;
+        border: 3px dashed green;
+        margin: 25px;
+      "
+    >
+      <p>content box</p>
+    </div>
+    <div
+      class="border-box"
+      style="
+        box-sizing: border-box;
+        width: 100px;
+        padding: 15px;
+        border: 3px solid blue;
+        margin: 25px;
+      "
+    >
+      <p>border-box</p>
+    </div>
+    <section>
+      <h2>Exercises</h2>
+      <ol>
+        <li>
+          Create a new div with a content width of 100px, 15px padding on all
+          sides, a 3px dashed green border, and 25px margin on all sides. Use
+          `box-sizing: content-box;`.
+        </li>
+        <li>
+          Create another div with a total width of 200px, 10px padding, and a
+          5px solid blue border. Use `box-sizing: border-box;`. Compare their
+          actual sizes using browser developer tools.
+        </li>
+        <li>
+          Apply different padding values (e.g., top: 5px, right: 10px, bottom:
+          15px, left: 20px) to an existing element.
+        </li>
+        <li>
+          Experiment with `margin-top` and `margin-bottom` on two paragraphs to
+          see how vertical margins collapse.
+        </li>
+      </ol>
+    </section>
+  </body>
+</html>

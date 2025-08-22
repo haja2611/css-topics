@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>04 — Text & Fonts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      /* Font Family */
+      .font-serif {
+        font-family: "Times New Roman", serif;
+      }
+      .font-sans-serif {
+        font-family: Arial, sans-serif;
+      }
+      .font-monospace {
+        font-family: "Courier New", monospace;
+      }
+
+      /* Font Size */
+      .font-small {
+        font-size: 0.8em;
+      }
+      .font-large {
+        font-size: 1.5em;
+      }
+      .font-px {
+        font-size: 24px;
+      }
+
+      /* Font Weight */
+      .font-light {
+        font-weight: 300;
+      }
+      .font-bold {
+        font-weight: bold;
+      }
+      .font-bolder {
+        font-weight: bolder;
+      }
+
+      /* Font Style */
+      .font-italic {
+        font-style: italic;
+      }
+
+      /* Text Align */
+      .text-left {
+        text-align: left;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .text-right {
+        text-align: right;
+      }
+      .text-justify {
+        text-align: justify;
+      }
+
+      /* Line Height */
+      .line-height-tight {
+        line-height: 1.2;
+      }
+      .line-height-loose {
+        line-height: 2;
+      }
+
+      /* Text Decoration */
+      .text-underline {
+        text-decoration: underline;
+      }
+      .text-line-through {
+        text-decoration: line-through;
+      }
+      .text-no-decoration {
+        text-decoration: none;
+      }
+
+      /* Text Transform */
+      .text-uppercase {
+        text-transform: uppercase;
+      }
+      .text-lowercase {
+        text-transform: lowercase;
+      }
+      .text-capitalize {
+        text-transform: capitalize;
+      }
+
+      /* Letter Spacing */
+      .letter-spacing-wide {
+        letter-spacing: 2px;
+      }
+      .letter-spacing-tight {
+        letter-spacing: -1px;
+      }
+
+      /* Word Spacing */
+      .word-spacing-wide {
+        word-spacing: 5px;
+      }
+
+      /* Text Shadow */
+      .text-shadow {
+        text-shadow: 2px 2px 4px #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text & Fonts</h1>
+
+    <p>
+      CSS offers a wide range of properties to control the appearance of text
+      and fonts.
+    </p>
+
+    <h2>1. Font Family (`font-family`)</h2>
+    <p>
+      Specifies the font for an element. Always provide a fallback generic
+      family.
+    </p>
+    <p class="font-serif">
+      This text is in a serif font (e.g., Times New Roman).
+    </p>
+    <p class="font-sans-serif">
+      This text is in a sans-serif font (e.g., Arial).
+    </p>
+    <p class="font-monospace">
+      This text is in a monospace font (e.g., Courier New).
+    </p>
+    <pre><code>font-family: "Arial", sans-serif;</code></pre>
+
+    <h2>2. Font Size (`font-size`)</h2>
+    <p>Sets the size of the font. Can use `px`, `em`, `rem`, `%`, etc.</p>
+    <p class="font-small">This is small text (0.8em).</p>
+    <p class="font-large">This is large text (1.5em).</p>
+    <p class="font-px">This is 24px text.</p>
+    <pre><code>font-size: 16px; /* Absolute size */
+font-size: 1.2em; /* Relative to parent's font-size */</code></pre>
+
+    <h2>3. Font Weight (`font-weight`)</h2>
+    <p>Sets the boldness of the font.</p>
+    <p class="font-light">This text is light (300).</p>
+    <p class="font-bold">This text is bold.</p>
+    <p class="font-bolder">This text is bolder.</p>
+    <pre><code>font-weight: bold; /* Keywords */
+font-weight: 700; /* Numeric values (100-900) */</code></pre>
+
+    <h2>4. Font Style (`font-style`)</h2>
+    <p>Sets the font style to normal, italic, or oblique.</p>
+    <p class="font-italic">This text is italic.</p>
+    <pre><code>font-style: italic;</code></pre>
+
+    <h2>5. Text Alignment (`text-align`)</h2>
+    <p>Aligns the text within an element horizontally.</p>
+    <div class="text-center" style="border: 1px solid #ccc; padding: 10px">
+      This text is centered.
+    </div>
+    <div class="text-right" style="border: 1px solid #ccc; padding: 10px">
+      This text is right-aligned.
+    </div>
+    <p class="text-justify">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat.
+    </p>
+    <pre><code>text-align: center;</code></pre>
+
+    <h2>6. Line Height (`line-height`)</h2>
+    <p>Sets the height of a line of text.</p>
+    <p class="line-height-tight">
+      This text has a tight line height.<br />Notice the reduced space between
+      lines.
+    </p>
+    <p class="line-height-loose">
+      This text has a loose line height.<br />Notice the increased space between
+      lines.
+    </p>
+    <pre><code>line-height: 1.6; /* Unitless value is relative to font-size */</code></pre>
+
+    <h2>7. Text Decoration (`text-decoration`)</h2>
+    <p>Applies various text decorations.</p>
+    <p class="text-underline">This text is underlined.</p>
+    <p class="text-line-through">This text has a line through it.</p>
+    <a href="#" class="text-no-decoration">This link has no underline.</a>
+    <pre><code>text-decoration: underline;</code></pre>
+
+    <h2>8. Text Transform (`text-transform`)</h2>
+    <p>Controls the capitalization of text.</p>
+    <p class="text-uppercase">This text is uppercase.</p>
+    <p class="text-lowercase">THIS TEXT IS LOWERCASE.</p>
+    <p class="text-capitalize">this text is capitalized.</p>
+    <pre><code>text-transform: uppercase;</code></pre>
+
+    <h2>9. Letter Spacing (`letter-spacing`)</h2>
+    <p>Increases or decreases the space between characters.</p>
+    <p class="letter-spacing-wide">W I D E S P A C I N G</p>
+    <p class="letter-spacing-tight">TightSpacing</p>
+    <pre><code>letter-spacing: 2px;</code></pre>
+
+    <h2>10. Word Spacing (`word-spacing`)</h2>
+    <p>Increases or decreases the space between words.</p>
+    <p class="word-spacing-wide">This text has wider word spacing.</p>
+    <pre><code>word-spacing: 5px;</code></pre>
+
+    <h2>11. Text Shadow (`text-shadow`)</h2>
+    <p>Adds shadow to text.</p>
+    <p class="text-shadow">Text with Shadow</p>
+    <pre><code>text-shadow: 2px 2px 4px #aaa;</code></pre>
+
+    <section>
+      <h2>Exercises</h2>
+      <ol>
+        <li>
+          Change the `font-serif` class to use a different serif font like
+          "Georgia".
+        </li>
+        <li>  
+          Set the `line-height` of all paragraphs to `1.8` using a type
+          selector.
+        </li>
+        <li>
+          Create a new class `strike-through` that applies `text-decoration:
+          line-through;` and apply it to a sentence.
+        </li>
+        <li>
+          Apply a text shadow to all `h1` elements with a color of `gray` and a
+          blur radius of `3px`.
+        </li>
+      </ol>
+    </section>
+
+    <p><a href="index.html">Back to index</a></p>
+  </body>
+</html>
