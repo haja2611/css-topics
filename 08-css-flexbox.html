@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>08-css-flexbox</title>
+    <style>
+      div {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        border: 2px solid red;
+        height: 700px;
+        justify-content: center;
+        align-items: center;
+      }
+      h1,
+      h2 {
+        border: 2px solid black;
+        /* flex-basis: 40%; */
+        /* flex-grow: 1; */
+
+        margin: 5px;
+        width: 50px;
+      }
+      /* h1 {
+        flex-grow: 1;
+      }
+      h2 {
+        flex-grow: 3;
+      } */
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>one</h1>
+
+      <!-- <h2>six</h2> -->
+    </div>
+  </body>
+</html>
+<section>
+  <h2>Exercises</h2>
+  <ol>
+    <li>
+      Create a flex container with 4 items. Set `justify-content` to
+      `space-between` and `align-items` to `center`.
+    </li>
+    <li>
+      In the same container, make the second item `flex-grow: 2` and the fourth
+      item `flex-grow: 0.5`.
+    </li>
+    <li>
+      Create a new flex container with `flex-direction: column;` and
+      `align-items: flex-end;`.
+    </li>
+    <li>
+      Experiment with `flex-wrap: wrap-reverse;` and `align-content` (for
+      multi-line flex containers) to see how items align when wrapped.
+    </li>
+  </ol>
+</section>
