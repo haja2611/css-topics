@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>17 — Layout Techniques (Float & Clear)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+      }
+      .container {
+        border: 2px solid #007bff;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #e0f2f7;
+        overflow: auto; /* For clearfix with floats */
+      }
+      .box {
+        width: 150px;
+        height: 100px;
+        background-color: #b3e5fc;
+        border: 1px solid #0056b3;
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+        line-height: 100px;
+        box-sizing: border-box;
+      }
+
+      /* Float */
+      .float-left {
+        float: left;
+        margin-right: 20px;
+      }
+      .float-right {
+        float: right;
+        margin-left: 20px;
+      }
+
+      /* Clear */
+      .clear-left {
+        clear: left;
+      }
+      .clear-right {
+        clear: right;
+      }
+      .clear-both {
+        clear: both;
+      }
+
+      /* Clearfix Methods */
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .overflow-container {
+        overflow: auto;
+      }
+
+      /* Layout Examples */
+      .gallery-item {
+        width: 30%;
+        float: left;
+        margin: 1.5%;
+        background-color: #d4edda;
+        border: 1px solid #28a745;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      .gallery-container {
+        border: 2px solid #28a745;
+        padding: 10px;
+        margin-bottom: 20px;
+        overflow: auto; /* Clearfix */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Layout Techniques (Float & Clear)</h1>
+
+    <p>
+      Before Flexbox and Grid, `float` and `clear` were commonly used for
+      creating multi-column layouts and wrapping text around images. While still
+      valid, modern CSS layout methods are generally preferred for complex
+      layouts.
+    </p>
+
+    <h2>1. `float` Property</h2>
+    <p>
+      The `float` property is used to place an element on the left or right side
+      of its container, allowing text and inline elements to wrap around it. It
+      takes the element out of the normal document flow.
+    </p>
+
+    <h3>`float: left;`</h3>
+    <div class="container">
+      <div class="box float-left">Float Left</div>
+      <p>
+        This paragraph will wrap around the floated box. Lorem ipsum dolor sit
+        amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+        dolore eu fugiat nulla pariatur.
+      </p>
+    </div>
+    <pre><code>float: left;</code></pre>
+
+    <h3>`float: right;`</h3>
+    <div class="container">
+      <div class="box float-right">Float Right</div>
+      <p>
+        This paragraph will wrap around the floated box on the right. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+    <pre><code>float: right;</code></pre>
+
+    <h2>2. `clear` Property</h2>
+    <p>
+      The `clear` property specifies what elements can float beside the cleared
+      element and on which side. It is used to ensure an element appears below
+      floated elements.
+    </p>
+
+    <h3>`clear: left;`</h3>
+    <div class="container">
+      <div class="box float-left">Floated</div>
+      <p class="clear-left">
+        This paragraph clears the left float, so it starts below the floated
+        box.
+      </p>
+      <p>This paragraph does not clear.</p>
+    </div>
+    <pre><code>clear: left;</code></pre>
+
+    <h3>`clear: right;`</h3>
+    <div class="container">
+      <div class="box float-right">Floated</div>
+      <p class="clear-right">This paragraph clears the right float.</p>
+    </div>
+    <pre><code>clear: right;</code></pre>
+
+    <h3>`clear: both;`</h3>
+    <p>Clears floats on both the left and right sides.</p>
+    <div class="container">
+      <div class="box float-left">Left</div>
+      <div class="box float-right">Right</div>
+      <p class="clear-both">
+        This paragraph clears both left and right floats.
+      </p>
+    </div>
+    <pre><code>clear: both;</code></pre>
+
+    <h2>3. Clearfix Techniques</h2>
+    <p>
+      When you float elements inside a container, the container might collapse
+      (its height becomes zero) because floated elements are out of the normal
+      document flow. Clearfix methods are used to fix this.
+    </p>
+
+    <h3>`overflow: auto;` or `overflow: hidden;`</h3>
+    <p>
+      Adding `overflow: auto;` or `overflow: hidden;` to the parent container
+      can force it to contain its floats.
+    </p>
+    <div class="container overflow-container">
+      <div class="box float-left">Floated Box 1</div>
+      <div class="box float-left">Floated Box 2</div>
+      <p>Parent with overflow:auto should contain floats.</p>
+    </div>
+    <pre><code>.container {
+  overflow: auto; /* Or hidden */
+}</code></pre>
+
+    <h3>`::after` Pseudo-element Clearfix (Recommended)</h3>
+    <p>
+      This method adds a generated content after the floated elements and clears
+      it, forcing the container to expand its height.
+    </p>
+    <div class="container clearfix">
+      <div class="box float-left">Floated Box A</div>
+      <div class="box float-left">Floated Box B</div>
+    </div>
+    <p>This paragraph comes after a clearfix container.</p>
+    <pre><code>.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}</code></pre>
+
+    <h2>Use Cases & Limitations</h2>
+    <p>Float-based layouts were standard for a long time for:</p>
+    <ul>
+      <li>Creating multi-column layouts.</li>
+      <li>Wrapping text around images.</li>
+    </ul>
+    <p>
+      <strong>Limitations:</strong> Not designed for complex layouts, often
+      requires clearfix hacks, can be unpredictable with varying content, and
+      not ideal for responsive design without extensive media queries.
+    </p>
+
+    <h3>Example: Simple Image Gallery with Floats</h3>
+    <div class="gallery-container">
+      <div class="gallery-item">Image 1</div>
+      <div class="gallery-item">Image 2</div>
+      <div class="gallery-item">Image 3</div>
+      <div class="gallery-item">Image 4</div>
+      <div class="gallery-item">Image 5</div>
+      <div class="gallery-item">Image 6</div>
+    </div>
+    <p>
+      This text appears below the floated image gallery due to the `overflow:
+      auto;` on the container.
+    </p>
+
+    <section>
+      <h2>Exercises</h2>
+      <ol>
+        <li>
+          Create a simple article with an image floated to the left, and text
+          wrapping around it. Ensure the image is contained within its parent.
+        </li>
+        <li>
+          Demonstrate the `clear: both;` property by having two floated divs
+          (left and right) and a paragraph below them that explicitly clears
+          both.
+        </li>
+        <li>
+          Remove the `overflow: auto;` from a container with floats and observe
+          what happens to its height. Then, apply the `clearfix::after` method.
+        </li>
+        <li>
+          Discuss when you might still use `float` in modern CSS vs. when
+          Flexbox/Grid are better alternatives.
+        </li>
+      </ol>
+    </section>
+
+    <p><a href="index.html">Back to index</a></p>
+  </body>
+</html>

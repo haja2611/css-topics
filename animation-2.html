@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-Animation</title>
+    <style>
+      div {
+        border: 2px solid red;
+        height: 50px;
+        width: 100px;
+        margin-bottom: 5px;
+        animation-name: example;
+        position: relative;
+        animation-duration: 6s;
+
+        /* animation-delay: -2s; */
+        background-color: aqua;
+        /* animation-timing-function: forwards; */
+        animation-iteration-count: infinite;
+        /* animation-direction: alternate-reverse; */
+      }
+      .ease {
+        animation-timing-function: ease;
+      }
+      .ease-in {
+        animation-timing-function: ease-in;
+      }
+      .ease-out {
+        animation-timing-function: ease-out;
+      }
+      .ease-in-out {
+        animation-timing-function: ease-in-out;
+      }
+      .linear {
+        animation-timing-function: linear;
+      }
+      @keyframes example {
+        from {
+          left: 0;
+        }
+        to {
+          left: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="linear">linear</div>
+    <div class="ease">ease</div>
+    <div class="ease-in">ease-in</div>
+    <div class="ease-out">ease-out</div>
+    <div class="ease-in-out">ease-in-out</div>
+  </body>
+</html>

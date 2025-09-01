@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>16 — Transforms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #007bff;
+        margin: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        border-radius: 5px;
+        transition: transform 0.5s ease-in-out;
+        float: left; /* For layout purposes */
+        box-sizing: border-box;
+      }
+      .container {
+        border: 1px dashed #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        overflow: hidden; /* Clear floats */
+      }
+
+      /* 2D Transforms */
+      .translate-box:hover {
+        transform: translate(50px, 20px);
+      }
+
+      .rotate-box:hover {
+        transform: rotate(45deg);
+      }
+      .rotate-origin-box {
+        transform-origin: top left;
+      }
+      .rotate-origin-box:hover {
+        transform: rotate(45deg);
+      }
+
+      .scale-box:hover {
+        transform: scale(1.2);
+      }
+
+      .skew-box:hover {
+        transform: skew(20deg, 10deg);
+      }
+
+      .matrix-box:hover {
+        transform: matrix(
+          1,
+          0.5,
+          -0.5,
+          1,
+          0,
+          0
+        ); /* Combines scale, skew, translate */
+      }
+
+      /* 3D Transforms */
+      .perspective-container {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #007bff;
+        margin: 50px;
+        perspective: 800px; /* Perspective for 3D effect on children */
+        float: left;
+        background-color: #f0f8ff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .rotate-x-box {
+        background-color: #e91e63;
+        transform: rotateX(0deg);
+        transition: transform 1s;
+      }
+      .rotate-x-box:hover {
+        transform: rotateX(180deg);
+      }
+
+      .rotate-y-box {
+        background-color: #4caf50;
+        transform: rotateY(0deg);
+        transition: transform 1s;
+      }
+      .rotate-y-box:hover {
+        transform: rotateY(180deg);
+      }
+
+      .rotate-z-box {
+        background-color: #ff9800;
+        transform: rotateZ(0deg);
+        transition: transform 1s;
+      }
+      .rotate-z-box:hover {
+        transform: rotateZ(90deg);
+      }
+
+      .translate-z-box {
+        background-color: #9c27b0;
+        transform: translateZ(0);
+        transition: transform 1s;
+      }
+      .translate-z-box:hover {
+        transform: translateZ(100px); /* Moves towards viewer */
+      }
+
+      .backface-box {
+        background-color: #2196f3;
+        transition: transform 1s;
+        backface-visibility: hidden; /* Hide backface when rotated */
+      }
+      .backface-box:hover {
+        transform: rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Transforms</h1>
+
+    <p>
+      CSS transforms allow you to move, rotate, scale, and skew elements. They
+      provide a powerful way to create visual effects and animations.
+    </p>
+
+    <h2>1. 2D Transforms</h2>
+    <p>
+      These transforms affect elements in a two-dimensional plane (X and Y
+      axes).
+    </p>
+
+    <h3>`translate()`</h3>
+    <p>Moves an element from its current position.</p>
+    <div class="container">
+      <div class="box translate-box">Translate</div>
+    </div>
+    <pre><code>transform: translate(50px, 20px); /* Moves 50px right, 20px down */
+transform: translateX(50px);
+transform: translateY(20px);</code></pre>
+
+    <h3>`rotate()`</h3>
+    <p>Rotates an element around its central point (by default).</p>
+    <div class="container">
+      <div class="box rotate-box">Rotate</div>
+    </div>
+    <pre><code>transform: rotate(45deg);</code></pre>
+
+    <h3>`transform-origin`</h3>
+    <p>
+      Allows you to change the position of the transformed element's origin (the
+      point around which a transform is applied).
+    </p>
+    <div class="container">
+      <div class="box rotate-origin-box">Rotate (Origin Top Left)</div>
+    </div>
+    <pre><code>transform-origin: top left; /* Default is center center */</code></pre>
+
+    <h3>`scale()`</h3>
+    <p>Increases or decreases the size of an element.</p>
+    <div class="container">
+      <div class="box scale-box">Scale</div>
+    </div>
+    <pre><code>transform: scale(1.2); /* 1.2 times original size */
+transform: scaleX(0.8);
+transform: scaleY(1.5);</code></pre>
+
+    <h3>`skew()`</h3>
+    <p>Skews an element along the X and Y axes.</p>
+    <div class="container">
+      <div class="box skew-box">Skew</div>
+    </div>
+    <pre><code>transform: skew(20deg, 10deg); /* Skew X by 20deg, Y by 10deg */
+transform: skewX(20deg);
+transform: skewY(10deg);</code></pre>
+
+    <h3>`matrix()` (Advanced)</h3>
+    <p>Combines all 2D transform methods into one. It takes six values.</p>
+    <div class="container">
+      <div class="box matrix-box">Matrix</div>
+    </div>
+    <pre><code>transform: matrix(scaleX, skewY, skewX, scaleY, translateX, translateY);</code></pre>
+
+    <h2>2. 3D Transforms</h2>
+    <p>
+      These transforms allow you to manipulate elements in three-dimensional
+      space.
+    </p>
+    <p>
+      For 3D transforms to be visible, the parent element often needs a
+      `perspective` property.
+    </p>
+
+    <h3>`rotateX()`</h3>
+    <p>Rotates an element around its X-axis (horizontal axis).</p>
+    <div class="perspective-container">
+      <div class="box rotate-x-box">Rotate X</div>
+    </div>
+    <pre><code>transform: rotateX(180deg);</code></pre>
+
+    <h3>`rotateY()`</h3>
+    <p>Rotates an element around its Y-axis (vertical axis).</p>
+    <div class="perspective-container">
+      <div class="box rotate-y-box">Rotate Y</div>
+    </div>
+    <pre><code>transform: rotateY(180deg);</code></pre>
+
+    <h3>`rotateZ()`</h3>
+    <p>
+      Rotates an element around its Z-axis (an axis perpendicular to the
+      screen).
+    </p>
+    <div class="perspective-container">
+      <div class="box rotate-z-box">Rotate Z</div>
+    </div>
+    <pre><code>transform: rotateZ(90deg);</code></pre>
+
+    <h3>`translateZ()`</h3>
+    <p>Moves an element along the Z-axis (towards or away from the viewer).</p>
+    <div class="perspective-container">
+      <div class="box translate-z-box">Translate Z</div>
+    </div>
+    <pre><code>transform: translateZ(100px);</code></pre>
+
+    <h3>`perspective` (on parent)</h3>
+    <p>
+      Defines the perspective from which the 3D transformed elements are viewed.
+    </p>
+    <pre><code>.container {
+  perspective: 800px;
+}</code></pre>
+
+    <h3>`backface-visibility`</h3>
+    <p>
+      Determines whether the back face of an element is visible when turned
+      towards the user.
+    </p>
+    <div class="perspective-container">
+      <div class="box backface-box">Backface Hidden</div>
+    </div>
+    <pre><code>backface-visibility: hidden;</code></pre>
+
+    <section>
+      <h2>Exercises</h2>
+      <ol>
+        <li>
+          Apply a `translate` transform to a `div` that moves it diagonally
+          (e.g., `translate(30px, 30px)`).
+        </li>
+        <li>
+          Create a `div` and apply `rotateY(180deg)` on hover. What happens to
+          the text? Then, add `backface-visibility: hidden;` to see the effect.
+        </li>
+        <li>
+          Combine `scale` and `rotate` transforms on a single element on hover.
+        </li>
+        <li>
+          Create a 3D cube effect using multiple `div` elements and `rotateX`,
+          `rotateY`, `translateZ` transforms. (Advanced)
+        </li>
+      </ol>
+    </section>
+
+    <p><a href="index.html">Back to index</a></p>
+  </body>
+</html>

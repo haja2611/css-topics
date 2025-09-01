@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>11 — Pseudo-classes & Elements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+
+      /* Pseudo-classes */
+      /* :hover */
+      .hover-box {
+        width: 150px;
+        height: 50px;
+        background-color: lightgray;
+        border: 1px solid #ccc;
+        text-align: center;
+        line-height: 50px;
+        margin: 10px 0;
+        transition: background-color 0.3s ease;
+      }
+      .hover-box:hover {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+      }
+
+      /* :active */
+      .active-button {
+        padding: 10px 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.1s ease;
+      }
+      .active-button:active {
+        background-color: #218838;
+        transform: translateY(1px);
+      }
+
+      /* :focus */
+      .focus-input:focus {
+        border-color: #ffc107;
+        box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+        outline: none;
+      }
+
+      /* :first-child */
+      .list-container p:first-child {
+        font-weight: bold;
+        color: #e91e63;
+      }
+
+      /* :nth-child(n) */
+      .another-list-container li:nth-child(2n) {
+        background-color: #f0f0f0;
+      }
+      .another-list-container li:nth-child(odd) {
+        color: #0056b3;
+      }
+
+      /* :not() */
+      .item-list li:not(.special) {
+        color: #666;
+      }
+
+      /* Pseudo-elements */
+      /* ::before */
+      .quote::before {
+        content: "\201C"; /* Left double quotation mark */
+        font-size: 2em;
+        color: #ccc;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      /* ::after */
+      .link-with-icon::after {
+        content: "\2192"; /* Right arrow */
+        margin-left: 5px;
+        font-size: 0.8em;
+      }
+
+      /* ::first-line */
+      .intro-paragraph::first-line {
+        font-variant: small-caps;
+        color: #883300;
+      }
+
+      /* ::first-letter */
+      .drop-cap::first-letter {
+        font-size: 3em;
+        float: left;
+        line-height: 1;
+        margin-right: 5px;
+        color: #007bff;
+      }
+
+      /* ::selection */
+      ::selection {
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pseudo-classes & Elements</h1>
+
+    <p>
+      CSS pseudo-classes and pseudo-elements are used to define special states
+      of an element or to style specific parts of an element, respectively.
+    </p>
+
+    <h2>Pseudo-classes</h2>
+    <p>
+      A pseudo-class is used to define a special state of an HTML element. It
+      starts with a single colon (`:`).
+    </p>
+
+    <h3>1. `:hover`</h3>
+    <p>Selects elements when you mouse over them.</p>
+    <div class="hover-box">Hover over me</div>
+    <pre><code>.element:hover {
+  background-color: blue;
+}</code></pre>
+
+    <h3>2. `:active`</h3>
+    <p>Selects the active link or element (e.g., when a button is clicked).</p>
+    <button class="active-button">Click Me</button>
+    <pre><code>button:active {
+  background-color: darkgreen;
+}</code></pre>
+
+    <h3>3. `:focus`</h3>
+    <p>
+      Selects an element that has input focus (e.g., when a text field is
+      clicked or tabbed into).
+    </p>
+    <input type="text" class="focus-input" placeholder="Click or tab here" />
+    <pre><code>input:focus {
+  border-color: orange;
+}</code></pre>
+
+    <h3>4. `:first-child`</h3>
+    <p>Selects every element that is the first child of its parent.</p>
+    <div class="list-container">
+      <p>This is the first paragraph (first-child).</p>
+      <p>This is the second paragraph.</p>
+      <span>This is a span.</span>
+    </div>
+    <pre><code>p:first-child {
+  font-weight: bold;
+}</code></pre>
+
+    <h3>5. `:nth-child(n)`</h3>
+    <p>
+      Selects every element that is the nth-child of its parent. `n` can be a
+      number, keyword (odd, even), or a formula (an+b).
+    </p>
+    <ul class="another-list-container">
+      <li>List Item 1 (odd)</li>
+      <li>List Item 2 (even)</li>
+      <li>List Item 3 (odd)</li>
+      <li>List Item 4 (even)</li>
+    </ul>
+    <pre><code>li:nth-child(even) {
+  background-color: lightgray;
+}
+li:nth-child(2n+1) { /* Same as odd */
+  color: blue;
+}</code></pre>
+
+    <h3>6. `:not(selector)`</h3>
+    <p>Selects every element that is NOT the specified selector.</p>
+    <ul class="item-list">
+      <li>Item 1</li>
+      <li class="special">Special Item</li>
+      <li>Item 3</li>
+    </ul>
+    <pre><code>li:not(.special) {
+  color: gray;
+}</code></pre>
+
+    <h2>Pseudo-elements</h2>
+    <p>
+      A CSS pseudo-element is used to style a specified part of an element. It
+      starts with a double colon (`::`).
+    </p>
+
+    <h3>1. `::before`</h3>
+    <p>Inserts content before the content of an element.</p>
+    <p class="quote">This is a quoted text example.</p>
+    <pre><code>.element::before {
+  content: "\201C";
+}</code></pre>
+
+    <h3>2. `::after`</h3>
+    <p>Inserts content after the content of an element.</p>
+    <a href="#" class="link-with-icon">Visit Website</a>
+    <pre><code>.element::after {
+  content: "\2192";
+}</code></pre>
+
+    <h3>3. `::first-line`</h3>
+    <p>Applies styles to the first line of a block-level element.</p>
+    <p class="intro-paragraph">
+      This is a long introductory paragraph to demonstrate the `::first-line`
+      pseudo-element. As you can see, only the very first line of this text will
+      be affected by the styles applied to this pseudo-element, while the rest
+      of the text remains in its default styling.
+    </p>
+    <pre><code>p::first-line {
+  font-variant: small-caps;
+}</code></pre>
+
+    <h3>4. `::first-letter`</h3>
+    <p>
+      Applies styles to the first letter of the first line of a block-level
+      element.
+    </p>
+    <p class="drop-cap">
+      This paragraph starts with a drop cap, where the first letter is
+      significantly larger and styled differently from the rest of the text,
+      creating a visually appealing effect often found in traditional
+      typography.
+    </p>
+    <pre><code>p::first-letter {
+  font-size: 3em;
+  float: left;
+}</code></pre>
+
+    <h3>5. `::selection`</h3>
+    <p>
+      Applies styles to the portion of an element that is highlighted by the
+      user (e.g., selected text).
+    </p>
+    <p>
+      Try <span style="user-select: all">selecting this text</span> to see the
+      `::selection` pseudo-element in action.
+    </p>
+    <pre><code>::selection {
+  background-color: yellow;
+  color: black;
+}</code></pre>
+
+    <section>
+      <h2>Exercises</h2>
+      <ol>
+        <li>Change the background of the `.hover-box` to `orange` on hover.</li>
+        <li>
+          Style every odd list item in `another-list-container` to have
+          `background-color: #e6f7ff;`.
+        </li>
+        <li>
+          Use `::before` to add a star (`★`) before every link on the page.
+        </li>
+        <li>
+          Create a new `p` element and use `::first-letter` to make the first
+          letter blue and bold.
+        </li>
+      </ol>
+    </section>
+
+    <p><a href="index.html">Back to index</a></p>
+  </body>
+</html>

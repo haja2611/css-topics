@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>12 — Responsive Design</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Important for responsive design -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        background-color: #f8f9fa;
+        color: #343a40;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background-color: #007bff;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      .columns {
+        display: flex;
+        flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+        gap: 20px;
+      }
+      .column {
+        flex: 1; /* Equal width by default */
+        background-color: #e9ecef;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+      }
+
+      /* Mobile First Approach: Default styles for small screens */
+      h1 {
+        font-size: 1.8em;
+      }
+      p {
+        font-size: 1em;
+      }
+      .column {
+        min-width: 100%; /* Columns stack vertically on small screens */
+      }
+
+      /* Media Queries */
+      /* Medium screens (e.g., tablets) */
+      @media screen and (min-width: 600px) {
+        h1 {
+          font-size: 2.2em;
+        }
+        .column {
+          flex: 1 1 calc(50% - 10px); /* Two columns */
+        }
+      }
+
+      /* Large screens (e.g., desktops) */
+      @media screen and (min-width: 900px) {
+        h1 {
+          font-size: 2.8em;
+        }
+        .column {
+          flex: 1 1 calc(33.33% - 13.33px); /* Three columns */
+        }
+      }
+
+      /* Landscape orientation for phones */
+      @media screen and (max-width: 768px) and (orientation: landscape) {
+        body {
+          background-color: #e6f7ff;
+        }
+      }
+
+      /* Print Styles */
+      @media print {
+        body {
+          background-color: white;
+          color: black;
+        }
+        .header,
+        .exercises {
+          display: none; /* Hide header and exercises in print */
+        }
+        .column {
+          border: none;
+          box-shadow: none;
+          background-color: transparent;
+        }
+      }
+
+      /* Flexible Units Examples */
+      .fluid-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px 0;
+      }
+      .rem-text {
+        font-size: 1.2rem; /* Relative to root font-size */
+      }
+      .em-text {
+        font-size: 1.2em; /* Relative to parent font-size */
+      }
+      .viewport-width-div {
+        width: 80vw; /* 80% of viewport width */
+        height: 10vh; /* 10% of viewport height */
+        background-color: #ffe0b2;
+        margin-top: 20px;
+        text-align: center;
+        line-height: 10vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Responsive Design</h1>
+      </div>
+
+      <p>
+        Responsive web design is an approach to web design that makes web pages
+        render well on a variety of devices and window or screen sizes, from
+        minimum to maximum display size.
+      </p>
+
+      <h2>1. Viewport Meta Tag</h2>
+      <p>
+        The `<meta name="viewport" />` tag is essential for responsive design.
+        It tells the browser how to control the page's dimensions and scaling.
+      </p>
+      <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+      <ul>
+        <li>
+          `width=device-width`: Sets the width of the page to follow the
+          screen-width of the device.
+        </li>
+        <li>
+          `initial-scale=1.0`: Sets the initial zoom level when the page is
+          first loaded by the browser.
+        </li>
+      </ul>
+
+      <h2>2. Media Queries (`@media`)</h2>
+      <p>
+        Media queries allow you to apply CSS styles based on device
+        characteristics (e.g., width, height, orientation, resolution).
+      </p>
+      <p>Try resizing your browser window to see the layout change:</p>
+      <div class="columns">
+        <div class="column">
+          Column 1 (Small: 100%, Medium: 50%, Large: 33.33%)
+        </div>
+        <div class="column">
+          Column 2 (Small: 100%, Medium: 50%, Large: 33.33%)
+        </div>
+        <div class="column">
+          Column 3 (Small: 100%, Medium: 50%, Large: 33.33%)
+        </div>
+        <div class="column">
+          Column 4 (Small: 100%, Medium: 50%, Large: 33.33%)
+        </div>
+      </div>
+      <pre><code>/* Styles for screens smaller than 600px (Mobile First) */
+body { font-size: 16px; }
+
+@media screen and (min-width: 600px) {
+  /* Styles for screens 600px and wider */
+  body { font-size: 18px; }
+}
+
+@media screen and (min-width: 900px) {
+  /* Styles for screens 900px and wider */
+  body { font-size: 20px; }
+}</code></pre>
+
+      <h3>Common Media Features:</h3>
+      <ul>
+        <li>`width`, `min-width`, `max-width`</li>
+        <li>`height`, `min-height`, `max-height`</li>
+        <li>`orientation` (portrait or landscape)</li>
+        <li>`resolution`</li>
+      </ul>
+
+      <h2>3. Flexible Units</h2>
+      <p>
+        Using relative units instead of absolute units allows elements to scale
+        proportionally with the viewport or parent elements.
+      </p>
+
+      <h3>Percentage (`%`)</h3>
+      <p>Relative to the parent element's size.</p>
+      <div style="width: 80%; background-color: #cfe2f3; padding: 10px">
+        This div is 80% of its parent's width.
+      </div>
+      <pre><code>width: 80%;</code></pre>
+
+      <h3>`em` and `rem`</h3>
+      <ul>
+        <li>`em`: Relative to the `font-size` of the element's *parent*.</li>
+        <li>
+          `rem`: Relative to the `font-size` of the *root* (html) element.
+          Generally preferred for consistent scaling.
+        </li>
+      </ul>
+      <p class="rem-text">This text uses `rem` units.</p>
+      <div style="font-size: 20px">
+        <p class="em-text">
+          This text uses `em` units (parent font-size is 20px).
+        </p>
+      </div>
+      <pre><code>font-size: 1.2rem; /* relative to root */
+font-size: 1.2em; /* relative to parent */</code></pre>
+
+      <h3>Viewport Units (`vw`, `vh`, `vmin`, `vmax`)</h3>
+      <ul>
+        <li>`vw`: 1% of the viewport's width.</li>
+        <li>`vh`: 1% of the viewport's height.</li>
+        <li>`vmin`: The smaller of `vw` or `vh`.</li>
+        <li>`vmax`: The larger of `vw` or `vh`.</li>
+      </ul>
+      <div class="viewport-width-div">This div is 80vw wide and 10vh tall.</div>
+      <pre><code>width: 80vw;
+height: 10vh;</code></pre>
+
+      <h2>4. Flexible Images</h2>
+      <p>
+        Images should scale down to fit their container without overflowing.
+      </p>
+      <img src="cat.jpg" alt="Responsive Image Example" class="fluid-img" />
+      <pre><code>img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}</code></pre>
+
+    
+
+      <p><a href="index.html">Back to index</a></p>
+    </div>
+  </body>
+</html>

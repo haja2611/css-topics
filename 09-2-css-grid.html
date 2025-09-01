@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css grid</title>
+    <style>
+      div {
+        display: grid;
+        border: 2px solid red;
+        grid-template-columns: minmax(200px, 1fr) 1fr 1fr;
+        /* grid-template-rows: 200px 500px;
+        grid-auto-rows: 350px; */
+        /* grid-auto-flow: row; */
+        column-gap: 10px;
+        row-gap: 10px;
+      }
+      h1 {
+        border: 2px solid black;
+        padding: 10px;
+
+        text-align: center;
+      }
+      .box1 {
+        background-color: lightblue;
+        grid-column: span 2;
+      }
+      .box2 {
+        background-color: lightgreen;
+        grid-row: span  3;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 class="box1">one</h1>
+      <h1 class="box2">two</h1>
+      <h1>three</h1>
+      <h1>four</h1>
+      <h1>five</h1>
+      <h1>six</h1>
+      <h1>seven</h1>
+      <h1>eight</h1>
+      <h1>nine</h1>
+      <h1>ten</h1>
+      <h1>eleven</h1>
+      <h1>twelve</h1>
+    </div>
+  </body>
+</html>
+<section class="exercises">
+  <h2>Exercises</h2>
+  <ol>
+    <li>
+      Modify the `columns` layout: for screens wider than `768px`, make it a
+      3-column layout.
+    </li>
+    <li>
+      Add a media query that changes the `background-color` of the `body` to
+      `lightgreen` when the screen orientation is `portrait` and `max-width` is
+      `480px`.
+    </li>
+    <li>
+      Create a new `p` element. Set its `font-size` using `vw` units and observe
+      how it scales with the browser window width.
+    </li>
+    <li>
+      Implement a simple navigation bar that changes from a horizontal layout on
+      large screens to a stacked vertical layout on small screens using a media
+      query.
+    </li>
+  </ol>
+</section>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Transform, Translate & Perspective Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f5f5f5;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background: #3498db;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.7s ease;
+        cursor: pointer;
+      }
+
+      /* Normal transforms */
+      .translate:hover {
+        transform: translate(50px, 20px);
+      }
+
+      .rotate:hover {
+        transform: rotate(45deg);
+      }
+
+      .scale:hover {
+        transform: scale(1.5);
+      }
+
+      .skew:hover {
+        transform: skew(20deg, 10deg);
+      }
+
+      /* Perspective parent */
+      .perspective-container {
+        perspective: 600px; /*  adding 3D depth */
+      }
+
+      .perspective-box:hover {
+        transform: rotateY(45deg); /* Rotate in 3D */
+      }
+    </style>
+  </head>
+  <body>
+    <h2>CSS Transform & Perspective Demo</h2>
+
+    <div class="box translate">Translate</div>
+    <div class="box rotate">Rotate</div>
+    <div class="box scale">Scale</div>
+    <div class="box skew">Skew</div>
+
+    <div class="perspective-container">
+      <div class="box perspective-box">3D</div>
+    </div>
+  </body>
+</html>

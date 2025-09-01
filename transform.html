@@ -1,0 +1,48 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transform</title>
+    <style>
+      div {
+        border: 2px solid red;
+        height: 50px;
+        width: 50px;
+        transition: 10s;
+        background-color: aqua;
+      }
+      div:hover {
+        transform: scale(1.5, 2);
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition</title>
+    <style>
+      div {
+        border: 2px solid red;
+        height: 50px;
+        width: 50px;
+        transition: width 2s, height 4s, transform 6s;
+        background-color: aqua;
+      }
+      div:hover{
+       width: 200px;
+       height:200px;
+       transform: rotate(360deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>

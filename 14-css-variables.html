@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>14 — CSS Variables</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      :root {
+        /* Global variables */
+        --primary-color: #007bff;
+        --secondary-color: #6c757d;
+        --main-bg-color: #f8f9fa;
+        --text-color: #343a40;
+        --padding-base: 15px;
+        --border-radius: 5px;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        background-color: var(--main-bg-color);
+        color: var(--text-color);
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: var(--padding-base);
+        background-color: white;
+        border: 1px solid #dee2e6;
+        border-radius: var(--border-radius);
+        box-shadow: 0 2px 4px rgba(0,0,0,.1);
+      }
+      h1, h2 {
+        color: var(--primary-color);
+      }
+      .button {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+      }
+      .button:hover {
+        background-color: #0056b3; /* Darker shade of primary color */
+      }
+
+      /* Scoped Variables */
+      .card {
+        --card-bg: #e9ecef;
+        --card-border: #adb5bd;
+        background-color: var(--card-bg);
+        border: 1px solid var(--card-border);
+        padding: var(--padding-base);
+        margin: 20px 0;
+        border-radius: var(--border-radius);
+      }
+      .card-header {
+        color: var(--primary-color);
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      .card p {
+        color: var(--secondary-color);
+      }
+
+      .dark-theme {
+        --main-bg-color: #343a40;
+        --text-color: #f8f9fa;
+        --primary-color: #17a2b8;
+        --secondary-color: #e9ecef;
+        color: var(--text-color);
+        background-color: var(--main-bg-color);
+        padding: var(--padding-base);
+        border-radius: var(--border-radius);
+      }
+
+      /* Fallback Values */
+      .fallback-example {
+        background-color: var(--non-existent-var, #ffeded); /* Fallback to light red */
+        color: var(--another-missing-var, #d9534f);
+        padding: var(--padding-base);
+        margin-top: 20px;
+        border: 1px dashed var(--non-existent-var, #d9534f);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CSS Variables (Custom Properties)</h1>
+
+      <p>CSS variables, also known as custom properties, allow you to define reusable values that can be used throughout your stylesheets. This makes your CSS more maintainable, flexible, and easier to update.</p>
+
+      <h2>1. Defining Variables</h2>
+      <p>Variables are defined using two hyphens (`--`) followed by a name (e.g., `--primary-color`). They are usually defined within a pseudo-class like `:root` to make them globally accessible.</p>
+      <pre><code>:root {
+  --primary-color: #007bff;
+  --main-bg-color: #f8f9fa;
+}</code></pre>
+
+      <h2>2. Using Variables (`var()`)</h2>
+      <p>To use a variable, you wrap its name with the `var()` function.</p>
+      <button class="button">A Primary Button</button>
+      <pre><code>.button {
+  background-color: var(--primary-color);
+  color: white;
+}</code></pre>
+
+      <h2>3. Scope of Variables</h2>
+      <p>CSS variables are subject to the cascade and inheritance. They can be defined globally (on `:root`) or locally within specific selectors, limiting their scope.</p>
+
+      <div class="card">
+        <h3 class="card-header">Card Title</h3>
+        <p>This card uses `--card-bg` and `--card-border` variables defined within its own scope.</p>
+      </div>
+      <pre><code>.card {
+  --card-bg: #e9ecef;
+  background-color: var(--card-bg);
+}</code></pre>
+
+      <h3>Dynamic Themings with Variables</h3>
+      <p>Variables are incredibly powerful for implementing theme switching or dynamic styles.</p>
+      <div class="dark-theme">
+        <h3>Dark Theme Example</h3>
+        <p>This section inherits and overrides some global variables to create a dark theme appearance.</p>
+        <button class="button">Another Button</button>
+      </div>
+      <pre><code>.dark-theme {
+  --main-bg-color: #343a40;
+  --text-color: #f8f9fa;
+  /* ... other overrides */
+}</code></pre>
+
+      <h2>4. Fallback Values</h2>
+      <p>You can provide a fallback value in the `var()` function. If the variable is not defined, the fallback value will be used.</p>
+      <div class="fallback-example">
+        <p>This box uses a fallback color because `--non-existent-var` is not defined.</p>
+      </div>
+      <pre><code>background-color: var(--non-existent-var, #ffeded);</code></pre>
+
+      <section>
+        <h2>Exercises</h2>
+        <ol>
+          <li>Define a global CSS variable `--font-size-large` set to `1.5rem` in `:root`. Apply it to all `h1` elements.</li>
+          <li>Create a new `div` and define a local variable `--div-border-color` set to `purple` within its style. Apply this variable to its border.</li>
+          <li>Modify the `.button` style to use a new variable `--button-hover-color` for its `hover` state, and set a fallback color of `darkblue`.</li>
+          <li>Create a simple color palette using CSS variables for `primary`, `secondary`, `success`, and `danger` colors, then apply them to different elements.</li>
+        </ol>
+      </section>
+
+      <p><a href="index.html">Back to index</a></p>
+    </div>
+  </body>
+</html>

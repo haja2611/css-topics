@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>18 — Performance Optimization</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        background-color: #f8f9fa;
+        color: #343a40;
+      }
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,.1);
+      }
+      h1, h2 {
+        color: #007bff;
+      }
+      code {
+        background: #e9ecef;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+      pre {
+        background: #f0f2f5;
+        padding: 10px;
+        border-left: 3px solid #007bff;
+        overflow-x: auto;
+      }
+      ul {
+        list-style: disc inside;
+        padding-left: 0;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+
+      /* Example for efficient selectors */
+      #uniqueId span.className {
+        color: green; /* Specific but potentially slow if #uniqueId is deep */
+      }
+      .fast-selector {
+        color: blue; /* Simple class selector is fast */
+      }
+    </style>
+    <!-- External CSS for demonstration of critical CSS/concatenation -->
+    <link rel="stylesheet" href="large-framework.css">
+    <link rel="stylesheet" href="component-styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>CSS Performance Optimization</h1>
+
+      <p>Optimizing CSS performance is crucial for fast loading times and a smooth user experience. Efficient CSS reduces render-blocking, improves page rendering, and saves bandwidth.</p>
+
+      <h2>1. Minification</h2>
+      <p>Removing all unnecessary characters from CSS source code without changing its functionality. This includes whitespace, comments, and redundant declarations. Reduces file size.</p>
+      <pre><code>/* Before minification */
+.button {
+  background-color: blue; /* Primary color */
+  padding: 10px;
+}
+
+/* After minification */
+.button{background-color:blue;padding:10px}</code></pre>
+      <ul>
+        <li>Tools: Online minifiers, build tools (e.g., Gulp, Webpack with CSS minimizers).</li>
+      </ul>
+
+      <h2>2. Concatenation</h2>
+      <p>Combining multiple CSS files into a single file. This reduces the number of HTTP requests a browser needs to make, speeding up load times.</p>
+      <p>Instead of:</p>
+      <pre><code>&lt;link rel="stylesheet" href="large-framework.css"&gt;
+&lt;link rel="stylesheet" href="component-styles.css"&gt;
+&lt;link rel="stylesheet" href="main.css"&gt;</code></pre>
+      <p>Combine them into one:</p>
+      <pre><code>&lt;link rel="stylesheet" href="all-styles.css"&gt;</code></pre>
+      <ul>
+        <li>Tools: Build tools (e.g., Gulp, Webpack, Rollup).</li>
+      </ul>
+
+      <h2>3. Gzip Compression</h2>
+      <p>A server-side compression method that reduces the size of files (like CSS) before sending them to the browser. Most web servers are configured to do this automatically.</p>
+      <ul>
+        <li>Check if your server sends `Content-Encoding: gzip` in HTTP headers.</li>
+      </ul>
+
+      <h2>4. Critical CSS (Above-the-Fold CSS)</h2>
+      <p>Extracting the CSS required for rendering the visible portion of the page (above the fold) and inlining it directly in the HTML `<head>`. This allows the browser to render content quickly without waiting for external stylesheets.</p>
+      <pre><code>&lt;head&gt;
+  &lt;style&gt;
+    /* Critical CSS for visible content */
+    body { margin: 0; }
+    .header { background: blue; }
+  &lt;/style&gt;
+  &lt;link rel="stylesheet" href="full-styles.css"&gt; /* Asynchronously loaded */
+&lt;/head&gt;</code></pre>
+      <ul>
+        <li>Tools: Critical (npm package), manual analysis.</li>
+      </ul>
+
+      <h2>5. Shorthand Properties</h2>
+      <p>Using shorthand CSS properties (e.g., `margin`, `padding`, `background`, `font`) to combine multiple individual properties into one. This makes your stylesheet more concise and potentially faster to parse.</p>
+      <pre><code>/* Longhand */
+margin-top: 10px;
+margin-right: 20px;
+margin-bottom: 10px;
+margin-left: 20px;
+
+/* Shorthand */
+margin: 10px 20px;</code></pre>
+
+      <h2>6. Avoiding `@import`</h2>
+      <p>The `@import` rule allows you to import one stylesheet into another. However, it causes browsers to process stylesheets in a serial manner, which can delay page rendering.</p>
+      <pre><code>/* Avoid this in main stylesheets for performance */
+@import url("another.css");</code></pre>
+      <ul>
+        <li>Prefer `<link>` tags or concatenation.</li>
+      </ul>
+
+      <h2>7. Efficient Selectors</h2>
+      <p>Some CSS selectors are more performant than others. Browsers read selectors from right to left. More specific and shorter selectors are generally faster.</p>
+      <ul>
+        <li><strong>Good:</strong> `.button { /* ... */ }` (Class selector)</li>
+        <li><strong>Better:</strong> `p.intro { /* ... */ }` (Tag and class)</li>
+        <li><strong>Avoid:</strong> `* { /* ... */ }` (Universal selector)</li>
+        <li><strong>Avoid:</strong> `div#main .sidebar li a { /* ... */ }` (Overly specific and long descendant selectors)</li>
+      </ul>
+      <p>This is a <span class="fast-selector">fast selector</span> example.</p>
+
+      <h2>8. Remove Unused CSS</h2>
+      <p>Large projects can accumulate a lot of unused CSS. Removing it can significantly reduce file size and improve parsing time.</p>
+      <ul>
+        <li>Tools: PurgeCSS, UnusedCSS, Chrome DevTools Coverage tab.</li>
+      </ul>
+
+      <section>
+        <h2>Exercises</h2>
+        <ol>
+          <li>Find a CSS minification tool online and try minifying a simple CSS snippet. Compare the original and minified file sizes.</li>
+          <li>Explain why combining multiple CSS files into one is beneficial for performance.</li>
+          <li>Using browser developer tools, inspect the network tab for this page. Can you identify any CSS files being loaded and check if they are gzipped?</li>
+          <li>Write a CSS rule that is intentionally inefficient and explain why it's inefficient, then rewrite it for better performance.</li>
+        </ol>
+      </section>
+
+      <p><a href="index.html">Back to index</a></p>
+    </div>
+  </body>
+</html>
